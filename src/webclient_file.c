@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include <rtthread.h>
+//#include <rtthread.h>
 #include <webclient.h>
 
 #ifdef RT_USING_DFS
@@ -25,7 +25,7 @@
 #define DBG_LEVEL                      DBG_INFO
 #endif /* WEBCLIENT_DEBUG */
 #define DBG_COLOR
-#include <rtdbg.h>
+//#include <rtdbg.h>
 
 /**
  * send GET request and store response data into the file.
