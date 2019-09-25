@@ -1,5 +1,7 @@
 WebClient移植FreeRTOS版本，BL60X平台
 
+需要 https://github.com/zhangruiyep/rt_ports 和 https://github.com/zhangruiyep/mbedtls_ports 
+
 # WebClient
 
 ## 1、介绍
