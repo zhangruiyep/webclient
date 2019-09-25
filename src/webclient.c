@@ -39,7 +39,7 @@
 #define DBG_LEVEL                      DBG_INFO
 #endif /* WEBCLIENT_DEBUG */
 #define DBG_COLOR
-//#include <rtdbg.h>
+#include <rtdbg.h>
 
 /* default receive or send timeout */
 #define WEBCLIENT_DEFAULT_TIMEO        6

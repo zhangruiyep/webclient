@@ -17,7 +17,7 @@
 #ifndef __WEBCLIENT_H__
 #define __WEBCLIENT_H__
 
-//#include <rtthread.h>
+#include <rtthread.h>
 
 #if defined(WEBCLIENT_USING_MBED_TLS) || defined(WEBCLIENT_USING_SAL_TLS)
 #include <tls_client.h>
@@ -27,7 +27,8 @@
 extern "C" {
 #endif   
 
-#ifdef USING_RTTHREAD
+//#ifdef USING_RTTHREAD
+#if 1
 #ifndef web_malloc
 #define web_malloc                     rt_malloc
 #endif
@@ -47,66 +48,6 @@ extern "C" {
 #ifndef web_strdup
 #define web_strdup                     rt_strdup
 #endif
-#endif
-
-#define OS_USING_FREERTOS
-#ifdef OS_USING_FREERTOS
-#include <stdbool.h>
-#include <utils_log.h>
-#include <string.h>
-#include <stdarg.h>
-#include <mbedtls/mycalloc.h>
-
-#ifndef web_malloc
-#define web_malloc                     pvPortMallocDMA
-#endif
-
-#ifndef web_calloc
-#define web_calloc                     mycalloc
-#endif
-
-#ifndef web_realloc
-#define web_realloc                    myrealloc
-#endif
-
-#ifndef web_free
-#define web_free                       vPortFreeDMA
-#endif
-
-#ifndef web_strdup
-#define web_strdup                     mystrdup
-#endif
-
-#define rt_bool_t   bool
-#define RT_NULL     NULL
-#define RT_TRUE     true
-#define RT_FALSE    false
-#define rt_int32_t  int
-
-#define RT_ENOMEM   12
-#define RT_ERROR    1
-#define RT_EOK      0
-
-#define RT_ASSERT(x)
-
-#define LOG_E       log_error
-#define LOG_D       log_debug
-#define rt_kprintf  printf
-
-#define rt_strlen   strlen
-#define rt_strncpy  strncpy
-#define rt_strstr   strstr
-#define rt_strdup   mystrdup
-#define rt_vsnprintf    vsnprintf
-#define rt_snprintf snprintf
-#define rt_strcmp   strcmp
-
-#define rt_memset   memset
-#define rt_calloc   mycalloc
-
-#define rt_tick_from_millisecond(x) (x)
-
-#define tls_free    vPortFreeDMA
 #endif
 
 #define WEBCLIENT_SW_VERSION           "2.1.1"

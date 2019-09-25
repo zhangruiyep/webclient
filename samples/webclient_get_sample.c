@@ -8,7 +8,7 @@
  * 2018-08-03    chenyong      the first version
  */
 
-//#include <rtthread.h>
+#include <rtthread.h>
 #include <webclient.h>
 #include <cli.h>
 
