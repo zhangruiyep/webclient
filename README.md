@@ -1,4 +1,4 @@
-WebClient移植FreeRTOS版本
+WebClient移植FreeRTOS版本，BL60X平台
 
 # WebClient
 

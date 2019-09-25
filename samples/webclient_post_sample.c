@@ -10,8 +10,9 @@
 
 #include <string.h>
 
-#include <rtthread.h>
+//#include <rtthread.h>
 #include <webclient.h>
+#include <cli.h>
 
 #define POST_RESP_BUFSZ                1024
 #define POST_HEADER_BUFSZ              1024
@@ -195,3 +196,23 @@ int webclient_post_test(int argc, char **argv)
 #include <finsh.h>
 MSH_CMD_EXPORT_ALIAS(webclient_post_test, web_post_test, webclient post request test.);
 #endif /* FINSH_USING_MSH */
+
+static void test_cmd_webclient_post_test(char *buf, int len, int argc, char **argv)
+{
+    webclient_post_test(argc, argv);
+}
+
+// STATIC_CLI_CMD_ATTRIBUTE makes this(these) command(s) static
+const static struct cli_command cmds_user[] STATIC_CLI_CMD_ATTRIBUTE = {
+    { "web_post_test", "webclient POST request test.", test_cmd_webclient_post_test},                                       
+};
+
+int helper_webclient_post_test_cli_init(void)
+{
+    // static command(s) do NOT need to call aos_cli_register_command(s) to register.
+    // However, calling aos_cli_register_command(s) here is OK but is of no effect as cmds_user are included in cmds list.
+    // XXX NOTE: Calling this *empty* function is necessary to make cmds_user in this file to be kept in the final link.
+    //return aos_cli_register_commands(cmds_user, sizeof(cmds_user) / sizeof(cmds_user[0]));
+    return 0;
+}
+
